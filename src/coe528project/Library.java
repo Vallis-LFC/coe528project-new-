@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 /**
  *
  * @author vkhlu
@@ -27,15 +29,44 @@ public class Library {
         return singleton;
     }
     
-    public boolean verifyBooks(Book toBeVerified){
+    public boolean verifyBooks(Book toBeVerified){  //i believe verifybooks is to check if book is in arraylist
+        for(int i = 0; i< myLibrary.size(); i++){
+            Book current = myLibrary.get(i);
+            if((current.getName()).equals(toBeVerified.getName()) && current.getPrice() == toBeVerified.getPrice()){
+                return true;
+            }
+        }
         return false;   //change
     }
     
     public void deleteBooks(Book d){
+        if(this.verifyBooks(d)){
+            myLibrary.remove(d);
+        }
         
     }
     
     public void addBooks(Book a){
+        if(this.verifyBooks(a)){
+            myLibrary.add(a);
+        }
+        
+    }
+    
+    public void readToFile(File input) throws FileNotFoundException{
+        try{
+            Scanner myReader = new Scanner(input);
+            while(myReader.hasNextLine()){
+                String name = myReader.next();
+                int price = myReader.nextInt();
+                myLibrary.add(new Book(name, price));
+                myReader.nextLine();
+            }
+        }
+        catch(FileNotFoundException e){
+            System.err.println("No File Found");
+        }
+
         
     }
     
