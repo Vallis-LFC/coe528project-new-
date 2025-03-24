@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 /**
  *
  * @author vkhlu
@@ -70,8 +71,19 @@ public class Library {
         
     }
     
-    public void writeToFile(File output){
-        
+    public void writeToFile(String output) throws IOException{
+        try {
+            FileWriter updated = new FileWriter(output);
+            for (int i = 0; i<myLibrary.size();i++){
+                updated.write(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice());
+            }
+            updated.close();
+            System.out.println("Library updated");
+        }
+        catch (IOException e){
+            System.err.println("Error occurred");
+            
+        }
     }
     
     public void clearFile(File input){
