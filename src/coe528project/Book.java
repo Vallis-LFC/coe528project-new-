@@ -38,6 +38,10 @@ public class Book {
         (this.selected).setSelected(check);
     }
     
+    public CheckBox getSelected(){
+        return this.selected;
+    }
+    
     public boolean checkSelected(){
         return this.selected.isSelected();
     }
