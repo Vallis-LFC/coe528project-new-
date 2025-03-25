@@ -98,7 +98,12 @@ public class Library {
     }
     
     public void display(){
-        
+        for (int i = 0; i< myLibrary.size();i++){
+            //display the checkbox with the label already written down
+            //no idea hwo to display the checkbox or it comes like that tho
+            
+            myLibrary.get(i).getSelected(); //might do it?????
+        }
     }
     
     public ArrayList<Book> selectBooks(){
