@@ -86,7 +86,14 @@ public class Library {
         }
     }
     
-    public void clearFile(File input){
+    public void clearFile(File input) throws IOException{
+        //deletes the file and creates a new one with same name
+        if(input.delete()){
+            input.createNewFile();
+        }
+        else{
+            throw new IOException("File not found");
+        }
         
     }
     
@@ -96,10 +103,19 @@ public class Library {
     
     public ArrayList<Book> selectBooks(){
         //check for books checkmarked
-        return //placeholder;
+        ArrayList<Book>selected = new ArrayList<Book>();
+        for(int i = 0; i<myLibrary.size();i++){
+            if(myLibrary.get(i).checkSelected()== true){
+                selected.add(myLibrary.get(i));
+            }
+        }
+        return selected;//placeholder;
     }
     
     public void clearCheckBoxes(){
         //clear all checkboxes in the book
+        for(int i = 0; i<myLibrary.size();i++){
+            myLibrary.get(i).setSelected(false);
+        }
     }
 }
