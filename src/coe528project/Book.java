@@ -26,6 +26,14 @@ public class Book {
         selected = new CheckBox("Book name: "+this.name+" Price: "+this.price);
     }
     
+    public String getName(){
+        return this.name;
+    }
+    
+    public int getPrice(){
+        return this.price;
+    }
+    
     public void setSelected(boolean check){
         (this.selected).setSelected(check);
     }
