@@ -117,6 +117,10 @@ public class Library {
         return selected;//placeholder;
     }
     
+    public ArrayList<Book> getLibrary(){
+        return myLibrary;
+    }
+    
     public void clearCheckBoxes(){
         //clear all checkboxes in the book
         for(int i = 0; i<myLibrary.size();i++){
