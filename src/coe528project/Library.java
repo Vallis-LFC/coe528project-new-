@@ -102,7 +102,7 @@ public class Library {
             //display the checkbox with the label already written down
             //no idea hwo to display the checkbox or it comes like that tho
             
-            myLibrary.get(i).getSelected(); //might do it?????
+            myLibrary.get(i).getSelected(); //might do it????? 
         }
     }
     
