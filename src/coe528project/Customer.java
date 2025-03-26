@@ -126,12 +126,24 @@ public class Customer {
         return this.username+this.password;
     }
     
-    public void addPoint(int p){
+    public void addPoint(int cost){
+        int p = 10*cost;
         this.points +=p;
     }
     
-    public void minusPoint(int p){
+    public int minusPoint(int total){   //minus point and returns cost
+        
+        int redeemable = this.points*100;
+        
+        if (total-redeemable>=0){
+            this.points = 0;
+            return total-redeemable;
+        }
+        
+        int p = total*100; //total cost of the books
         this.points-= p;
+        return 0;
+        
     }
     
     public int checkPoints(){
@@ -175,4 +187,13 @@ public class Customer {
     public void setSelected(boolean check){
         this.select.setSelected(check);
     }
+    
+    public ArrayList<Book> getSavedBooks(){
+        return this.SelectedBooks;
+    }
+    
+    public void saveBooks(Library myLibrary){
+        this.SelectedBooks = myLibrary.selectBooks();
+    }
+    
 }
