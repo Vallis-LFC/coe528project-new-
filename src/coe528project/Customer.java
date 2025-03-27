@@ -25,7 +25,7 @@ import java.util.Scanner;
  */
 public class Customer {
     private int points;
-    private CheckBox select;
+    //private CheckBox select;
     private String name;
     private String username;
     private String password;
@@ -38,7 +38,7 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.points = 0; //starts at 0
-        select = new CheckBox(this.username+" | "+this.password+" | "+this.points+" | ");
+        //select = new CheckBox(this.username+" | "+this.password+" | "+this.points+" | ");
         
     }
     
@@ -49,7 +49,7 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.points = point;
-        select = new CheckBox("Customer username: "+this.username);
+       // select = new CheckBox("Customer username: "+this.username);
         
     }
     
@@ -64,7 +64,7 @@ public class Customer {
         customers.remove(this);
     }
     
-    public void display(){
+    public void display(){      //makes the table
         
     }
     
@@ -78,16 +78,16 @@ public class Customer {
         return selected;
     }
     
-    public void clearCheckBoxes(){
-        for(int i = 0; i<customers.size();i++){
-            customers.get(i).setSelected(false);
-        }
-    }
+//    public void clearCheckBoxes(){
+//        for(int i = 0; i<customers.size();i++){
+//            customers.get(i).setSelected(false);
+//        }
+//    }
     
-    public boolean checkSelected(){
-        //check for selected customers
-        return this.select.isSelected();
-    }
+//    public boolean checkSelected(){
+//        //check for selected customers
+//        return this.select.isSelected();
+//    }
     
     public void readToFile(File input) throws FileNotFoundException{
         try{
@@ -204,9 +204,9 @@ public class Customer {
         return true;
     }
     
-    public void setSelected(boolean check){
-        this.select.setSelected(check);
-    }
+//    public void setSelected(boolean check){
+//        this.select.setSelected(check);
+//    }
     
     public ArrayList<Book> getSavedBooks(){
         return this.SelectedBooks;
