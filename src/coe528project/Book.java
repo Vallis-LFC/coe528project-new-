@@ -23,7 +23,7 @@ public class Book {
     public Book(String name, int price){
         this.name = name;
         this.price = price;
-        selected = new CheckBox("Book name: "+this.name+" Price: "+this.price);
+        selected = new CheckBox(this.name+" | "+this.price+" | "); //changed so when displaying it would look like a table
     }
     
     public String getName(){
