@@ -26,13 +26,15 @@ import java.util.Scanner;
 public class Customer {
     private int points;
     private CheckBox select;
+    private String name;
     private String username;
     private String password;
     private ArrayList<Customer> customers;
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
-    public Customer(String username, String password){
+    public Customer(String name, String username, String password){
+        this.name = name;
         this.username = username;
         this.password = password;
         this.points = 0; //starts at 0
@@ -40,7 +42,8 @@ public class Customer {
         
     }
     
-    public Customer(String username, String password, int point){
+    public Customer(String name, String username, String password, int point){
+        this.name = name;
         this.username = username;
         this.password = password;
         this.points = point;
@@ -85,10 +88,11 @@ public class Customer {
         try{
             Scanner myReader = new Scanner(input);
             while(myReader.hasNextLine()){
+                String customerName = myReader.next();
                 String usr = myReader.next();
                 String pass = myReader.next();
                 int p = myReader.nextInt();
-                customers.add( new Customer(usr, pass, p)); //adds to array and intializes the customer 
+                customers.add( new Customer(customerName, usr, pass, p)); //adds to array and intializes the customer 
                 myReader.nextLine();//increments to next line
             }
         }
@@ -102,7 +106,7 @@ public class Customer {
         try {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<customers.size();i++){
-                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
+                updated.write(customers.get(i).getName()+"\t"+customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
             }
             updated.close();
             System.out.println("Customers updated");
@@ -157,9 +161,9 @@ public class Customer {
         return Status[0];
     }
     
-    public Customer findCustomer(String username, String password){
+    public Customer findCustomer(String username, String password, String name){
         for(int i=0; i< customers.size();i++){
-            if(customers.get(i).getUsername().equals(username) && customers.get(i).getUsername().equals(password)){
+            if(customers.get(i).getUsername().equals(username) && customers.get(i).getPassword().equals(password) && customers.get(i).getName().equals(name)){
                 return customers.get(i);
             }
         }
@@ -169,6 +173,10 @@ public class Customer {
     
     public String getUsername(){
         return this.username;
+    }
+    
+    public String getName(){
+        return this.name;
     }
     
     public String getPassword(){
