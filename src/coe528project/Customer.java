@@ -29,7 +29,7 @@ public class Customer {
     private String name;
     private String username;
     private String password;
-    private ArrayList<Customer> customers;
+    private ArrayList<Customer> customers ;
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
@@ -38,9 +38,11 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.points = 0; //starts at 0
-        select = new CheckBox("Customer username: "+this.username);
+        select = new CheckBox(this.username+" | "+this.password+" | "+this.points+" | ");
         
     }
+    
+    
     
     public Customer(String name, String username, String password, int point){
         this.name = name;
@@ -52,7 +54,10 @@ public class Customer {
     }
     
     public void addCustomer(){
-        customers.add(this);
+        if(this.verifyPassword(this.password)==true){
+            customers.add(this);
+        }
+        
     }
     
     public void deleteCustomer(){
@@ -95,6 +100,7 @@ public class Customer {
                 customers.add( new Customer(customerName, usr, pass, p)); //adds to array and intializes the customer 
                 myReader.nextLine();//increments to next line
             }
+            customers.add(new Customer("manager", "admin", "admin"));   //adds manager to the list for the login
         }
         catch(FileNotFoundException e){
             System.err.println("No File Found");
@@ -106,6 +112,9 @@ public class Customer {
         try {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<customers.size();i++){
+                if(customers.get(i).verifyPassword("admin")){   //skips the manager to put into the customer txt
+                    continue;
+                }
                 updated.write(customers.get(i).getName()+"\t"+customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
             }
             updated.close();
@@ -185,7 +194,10 @@ public class Customer {
     
     public boolean verifyPassword(String password){ //verifys a different password so that we can use same username
         for(int i = 0; i< customers.size();i++){
-            if(customers.get(i).getPassword().equals(password)){
+            if(customers.get(i).getPassword().equals("admin")){
+                return false;
+            }
+            else if(customers.get(i).getPassword().equals(password)){
                 return false;
             }
         }
