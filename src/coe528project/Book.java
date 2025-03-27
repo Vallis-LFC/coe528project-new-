@@ -18,12 +18,12 @@ import javafx.stage.Stage;
 public class Book {
     private String name;
     private int price;
-    private CheckBox selected;
+    //private CheckBox selected;
     
     public Book(String name, int price){
         this.name = name;
         this.price = price;
-        selected = new CheckBox(this.name+" | "+this.price+" | "); //changed so when displaying it would look like a table
+        //selected = new CheckBox(this.name+" | "+this.price+" | "); //changed so when displaying it would look like a table
     }
     
     public String getName(){
@@ -34,15 +34,15 @@ public class Book {
         return this.price;
     }
     
-    public void setSelected(boolean check){
-        (this.selected).setSelected(check);
-    }
+//    public void setSelected(boolean check){
+//        (this.selected).setSelected(check);
+//    }
     
-    public CheckBox getSelected(){
-        return this.selected;
-    }
-    
-    public boolean checkSelected(){
-        return this.selected.isSelected();
-    }
+//    public CheckBox getSelected(){
+//        return this.selected;
+//    }
+//    
+//    public boolean checkSelected(){
+//        return this.selected.isSelected();
+//    }
 }
