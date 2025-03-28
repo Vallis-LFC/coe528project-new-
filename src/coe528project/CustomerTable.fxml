@@ -11,6 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
+       <Text strokeType="OUTSIDE" AnchorPane.topAnchor="10.0" text="Customers"  />
       <TableView fx:id="tableView" layoutX="20.0" layoutY="20.0" prefHeight="150.0" prefWidth="560.0">
         <columns>
           <TableColumn fx:id="usrColumn" prefWidth="75.0" text="Username" />
