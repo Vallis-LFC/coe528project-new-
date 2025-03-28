@@ -30,7 +30,7 @@ public class Customer {
     private String name;
     private String username;
     private String password;
-    private ObservableList<Customer> customers ;
+    private static ObservableList<Customer> customers ;
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
