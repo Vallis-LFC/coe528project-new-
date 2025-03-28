@@ -46,17 +46,17 @@ public class LibraryTableController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Book Name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("Price"));
-        
+        for(int i = 0; i<Library.getInstance().getLibrary().size();i++){
+            myLibrary.add(Library.getInstance().getLibrary().get(i));
+        }
+        tableView.setItems(myLibrary);
     }
 
     //Submit button
     @FXML
     void addBook(ActionEvent event) {
         Book b = new Book(nameInput.getText(), Integer.parseInt(priceInput.getText()));
-        
-        for(int i = 0; i<Library.getInstance().getLibrary().size();i++){
-            myLibrary.add(Library.getInstance().getLibrary().get(i));
-        }
+
         myLibrary.add(b);
         Library.getInstance().addBooks(b);
         tableView.setItems(myLibrary);
