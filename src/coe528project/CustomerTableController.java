@@ -50,13 +50,17 @@ public class CustomerTableController implements Initializable {
         usrColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Username"));
         passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Password"));
         ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("Points"));
+        
+        Customer tmp = new Customer("","","");  //makes a empty customer but since its not added into the list, doesnt matter
+        customers = tmp.getCustomers();
+        tableView.setItems(customers);
     }
 
     //Submit button
     @FXML
     void addCustomer(ActionEvent event) {
         Customer customer = new Customer(nameInput.getText(), usrInput.getText(),passInput.getText());
-        customers = customer.getCustomers();
+        
         customer.addCustomer();
         tableView.setItems(customers);
     }
