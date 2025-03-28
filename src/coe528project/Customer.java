@@ -57,11 +57,20 @@ public class Customer {
         if(this.verifyPassword(this.password)==true){
             customers.add(this);
         }
+        else{
+            System.err.println("same password");
+        }
         
     }
     
     public void deleteCustomer(){
-        customers.remove(this);
+        if(this.findCustomer()){
+            customers.remove(this);
+        }
+        else{
+            System.err.println("No such customer found");
+        }
+        
     }
     
 //    public void display(){      //makes the table
@@ -170,14 +179,14 @@ public class Customer {
         return Status[0];
     }
     
-    public Customer findCustomer(String username, String password, String name){
+    public boolean findCustomer(){
         for(int i=0; i< customers.size();i++){
-            if(customers.get(i).getUsername().equals(username) && customers.get(i).getPassword().equals(password) && customers.get(i).getName().equals(name)){
-                return customers.get(i);
+            if(customers.get(i).getUsername().equals(this.username) && customers.get(i).getPassword().equals(this.password) && customers.get(i).getName().equals(this.name)){
+                return true;
             }
         }
-        System.err.println("No such customer found");
-        return null;
+        //System.err.println("No such customer found");
+        return false;
     }
     
     public String getUsername(){
