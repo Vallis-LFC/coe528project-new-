@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javafx.collections.ObservableList;
 
         
 /**
@@ -29,7 +30,7 @@ public class Customer {
     private String name;
     private String username;
     private String password;
-    private ArrayList<Customer> customers ;
+    private ObservableList<Customer> customers ;
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
@@ -64,9 +65,9 @@ public class Customer {
         customers.remove(this);
     }
     
-    public void display(){      //makes the table
-        
-    }
+//    public void display(){      //makes the table
+//        
+//    }
     
 //    public ArrayList<Customer> selectCustomers(){       //change
 //        ArrayList<Customer> selected = new ArrayList<Customer>();
@@ -192,6 +193,11 @@ public class Customer {
         return this.password;
     }
     
+    public ObservableList<Customer> getCustomers(){
+        return this.customers;
+    }
+        
+    
     public boolean verifyPassword(String password){ //verifys a different password so that we can use same username
         for(int i = 0; i< customers.size();i++){
             if(customers.get(i).getPassword().equals("admin")){
@@ -212,7 +218,7 @@ public class Customer {
         return this.SelectedBooks;
     }
     
-    public void saveBooks(Library myLibrary){
+    public void saveBooks(Library myLibrary){   //stay as is
         this.SelectedBooks = myLibrary.selectBooks();
     }
     
