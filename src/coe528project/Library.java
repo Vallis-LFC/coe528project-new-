@@ -5,6 +5,7 @@
 package coe528project;
 
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -97,34 +98,34 @@ public class Library {
         
     }
     
-    public void display(){
-        for (int i = 0; i< myLibrary.size();i++){
-            //display the checkbox with the label already written down
-            //no idea hwo to display the checkbox or it comes like that tho
-            
-            myLibrary.get(i).getSelected(); //might do it????? 
-        }
-    }
-    
-    public ArrayList<Book> selectBooks(){
-        //check for books checkmarked
-        ArrayList<Book>selected = new ArrayList<Book>();
-        for(int i = 0; i<myLibrary.size();i++){
-            if(myLibrary.get(i).checkSelected()== true){
-                selected.add(myLibrary.get(i));
-            }
-        }
-        return selected;//placeholder;
-    }
+//    public void display(){
+//        for (int i = 0; i< myLibrary.size();i++){
+//            //display the checkbox with the label already written down
+//            //no idea hwo to display the checkbox or it comes like that tho
+//            
+//           // myLibrary.get(i).getSelected(); //might do it????? 
+//        }
+//    }
+//    
+//    public ArrayList<Book> selectBooks(){
+//        //check for books checkmarked
+//        ArrayList<Book>selected = new ArrayList<Book>();
+//        for(int i = 0; i<myLibrary.size();i++){
+//            if(myLibrary.get(i).checkSelected()== true){
+//                selected.add(myLibrary.get(i));
+//            }
+//        }
+//        return selected;//placeholder;
+//    }
     
     public ArrayList<Book> getLibrary(){
         return myLibrary;
     }
     
-    public void clearCheckBoxes(){
-        //clear all checkboxes in the book
-        for(int i = 0; i<myLibrary.size();i++){
-            myLibrary.get(i).setSelected(false);
-        }
-    }
+//    public void clearCheckBoxes(){
+//        //clear all checkboxes in the book
+//        for(int i = 0; i<myLibrary.size();i++){
+//            //myLibrary.get(i).setSelected(false);
+//        }
+//    }
 }
