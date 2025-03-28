@@ -219,7 +219,7 @@ public class Customer {
     }
     
     public void saveBooks(Library myLibrary){   //stay as is
-        this.SelectedBooks = myLibrary.selectBooks();
+        this.SelectedBooks = myLibrary.selectBooks(); 
     }
     
 }
