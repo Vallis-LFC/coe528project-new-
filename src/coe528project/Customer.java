@@ -68,15 +68,15 @@ public class Customer {
         
     }
     
-    public ArrayList<Customer> selectCustomers(){
-        ArrayList<Customer> selected = new ArrayList<Customer>();
-        for(int i = 0; i<customers.size();i++){
-            if (customers.get(i).checkSelected() == true){
-                selected.add(customers.get(i));
-            }
-        }
-        return selected;
-    }
+//    public ArrayList<Customer> selectCustomers(){       //change
+//        ArrayList<Customer> selected = new ArrayList<Customer>();
+//        for(int i = 0; i<customers.size();i++){
+//            if (customers.get(i).checkSelected() == true){
+//                selected.add(customers.get(i));
+//            }
+//        }
+//        return selected;
+//    }
     
 //    public void clearCheckBoxes(){
 //        for(int i = 0; i<customers.size();i++){
