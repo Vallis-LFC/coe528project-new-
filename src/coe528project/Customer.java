@@ -43,8 +43,7 @@ public class Customer {
         
     }
     
-    
-    
+ 
     public Customer(String name, String username, String password, int point){
         this.name = name;
         this.username = username;
