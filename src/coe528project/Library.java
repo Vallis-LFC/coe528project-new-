@@ -107,25 +107,25 @@ public class Library {
 //        }
 //    }
 //    
-//    public ArrayList<Book> selectBooks(){
-//        //check for books checkmarked
-//        ArrayList<Book>selected = new ArrayList<Book>();
-//        for(int i = 0; i<myLibrary.size();i++){
-//            if(myLibrary.get(i).checkSelected()== true){
-//                selected.add(myLibrary.get(i));
-//            }
-//        }
-//        return selected;//placeholder;
-//    }
+    public ArrayList<Book> selectBooks(){
+        //check for books checkmarked
+        ArrayList<Book>selected = new ArrayList<Book>();
+        for(int i = 0; i<myLibrary.size();i++){
+            if(myLibrary.get(i).checkSelected()== true){
+                selected.add(myLibrary.get(i));
+            }
+        }
+        return selected;//placeholder;
+    }
     
     public ArrayList<Book> getLibrary(){
         return myLibrary;
     }
     
-//    public void clearCheckBoxes(){
-//        //clear all checkboxes in the book
-//        for(int i = 0; i<myLibrary.size();i++){
-//            //myLibrary.get(i).setSelected(false);
-//        }
-//    }
+    public void clearCheckBoxes(){
+        //clear all checkboxes in the book
+        for(int i = 0; i<myLibrary.size();i++){
+            myLibrary.get(i).setSelected(false);
+        }
+    }
 }
