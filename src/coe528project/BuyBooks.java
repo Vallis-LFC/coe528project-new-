@@ -37,6 +37,7 @@ public class BuyBooks {
             myLibrary.deleteBooks(buyer.getSavedBooks().get(i));
         }
         buyer.getSavedBooks().clear();
+        Library.getInstance().clearCheckBoxes();
         
         
     }
@@ -50,5 +51,6 @@ public class BuyBooks {
             myLibrary.deleteBooks(buyer.getSavedBooks().get(i));
         }
         buyer.getSavedBooks().clear();
+        Library.getInstance().clearCheckBoxes();
     }
 }
