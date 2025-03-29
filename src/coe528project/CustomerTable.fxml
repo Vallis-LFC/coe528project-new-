@@ -9,27 +9,25 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.CustomerTableController">
    <children>
        <Text strokeType="OUTSIDE" AnchorPane.topAnchor="10.0" text="Customers"  />
-      <TableView fx:id="tableView" layoutX="20.0" layoutY="20.0" prefHeight="150.0" prefWidth="560.0">
+      <TableView fx:id="tableView" layoutX="100.0" layoutY="73.0" prefHeight="150.0" prefWidth="150.0">
         <columns>
           <TableColumn fx:id="usrColumn" prefWidth="75.0" text="Username" />
           <TableColumn fx:id="passColumn" prefWidth="75.0" text="Password" />
             <TableColumn fx:id="ptsColumn" prefWidth="75.0" text="Points" />
         </columns>
       </TableView>
-      <VBox layoutX="20.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
+      <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <TextField fx:id="nameInput" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-            <TextField fx:id="usrInput" />
-            <Text layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <TextField fx:id="passInput" />
-            <Button mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="200.0" text="Add" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+        <TextField fx:id="usrInput" />
+        <Text layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+        <TextField fx:id="passInput" />
          </children>
       </VBox>
-      <Button layoutX="420.0" layoutY="349.0" mnemonicParsing="false" onAction="#removeCustomer" text="Delete" />
+       <Button layoutX="200.0" layoutY = "349.0" AnchorPane.bottomAnchor="100.0"  mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="200.0" text="Add" />
+      <Button layoutX="420.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#removeCustomer" prefHeight="25.0" prefWidth="200.0" text="Delete" />
    </children>
 </AnchorPane>
