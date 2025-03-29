@@ -67,12 +67,14 @@ public class LibraryCustomerController implements Initializable {
 
     public void initData(Customer customer ){   //use this on the login screen so we can get info about the customer if login succeeds so the state mode actually
         this.buyer = customer;
-        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.checkPoints()+" points. Your status is "+this.buyer.checkStatus());
+        
     }
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.checkPoints()+" points. Your status is "+this.buyer.checkStatus());
+        welcomeLabel.setWrapText(true);
+        welcomeLabel.setPrefWidth(500);
         nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("price"));
         selectColumn.setCellValueFactory(new PropertyValueFactory<Book, CheckBox>("selected"));
@@ -104,7 +106,7 @@ public class LibraryCustomerController implements Initializable {
             BuyBooks.getInstance().buy(Library.getInstance(), buyer, cost);
             tableView.setItems(myLibrary);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(""));     //buy-screen
+            loader.setLocation(getClass().getResource("CostView.fxml"));     //buy-screen
             Parent CostParent = loader.load();
             Scene costScene = new Scene(CostParent);
             CostViewController controller = loader.getController(); //will make this later dun wanna td
@@ -123,7 +125,7 @@ public class LibraryCustomerController implements Initializable {
     }
 
     @FXML
-    void redeemAndBuy(ActionEvent event) {
+    void redeemAndBuy(ActionEvent event) throws IOException{
         buyer.saveBooks(Library.getInstance()); //checks for the check boxes
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("confirm checkout");
@@ -141,7 +143,7 @@ public class LibraryCustomerController implements Initializable {
             BuyBooks.getInstance().redeemAndBuy(Library.getInstance(), buyer, cost);
             tableView.setItems(myLibrary);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(""));     //buy-screen
+            loader.setLocation(getClass().getResource("CostView.fxml"));     //buy-screen
             Parent CostParent = loader.load();
             Scene costScene = new Scene(CostParent);
             CostViewController controller = loader.getController(); //will make this later dun wanna td
