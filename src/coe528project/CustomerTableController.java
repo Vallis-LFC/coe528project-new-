@@ -54,9 +54,9 @@ public class CustomerTableController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usrColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Username"));
-        passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Password"));
-        ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("Points"));
+        usrColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("username"));
+        passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("password"));
+        ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("points"));
         Customer tmp = new Customer("","");
         for(int i = 0; i<tmp.getCustomers().size();i++){
             customers.add(tmp.getCustomers().get(i));
