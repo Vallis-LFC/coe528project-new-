@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.CostViewController">
-    
+<?import javafx.scene.control.Label?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.CostViewController">
+    <children>
+    <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="500.0" spacing="5.0" alignment="CENTER">
+         <children>
+        <Label fx:id = "cost" />
+        <Label fx:id = "ptstatus" />
+         </children>
+      </VBox>
+      <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
+    </children>
 </AnchorPane>
