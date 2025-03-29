@@ -10,10 +10,10 @@ package coe528project;
  */
 public class BuyBooks {
     private static BuyBooks instance; //singleton to make the constructor unreachable so functions can be used without risk
-    private BuyBooks(){
-        
-        
-    }
+//    private BuyBooks(){
+//        
+//        
+//    }
     
     public static BuyBooks getInstance(){
         if(instance == null){
