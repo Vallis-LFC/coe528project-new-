@@ -4,6 +4,7 @@
  */
 package coe528project;
 
+import java.io.IOException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class LibraryTableController implements Initializable {
     //Library temp;
@@ -56,9 +62,10 @@ public class LibraryTableController implements Initializable {
     @FXML
     void addBook(ActionEvent event) {
         Book b = new Book(nameInput.getText(), Integer.parseInt(priceInput.getText()));
-
-        myLibrary.add(b);
-        Library.getInstance().addBooks(b);
+        if (!Library.getInstance().verifyBooks(b)){
+            myLibrary.add(b);
+            Library.getInstance().addBooks(b);
+        }
         tableView.setItems(myLibrary);
     }
 
@@ -69,5 +76,14 @@ public class LibraryTableController implements Initializable {
         tableView.getItems().remove(selectedID);
         Library.getInstance().deleteBooks(del);
         myLibrary.remove(del);
+    }
+    
+    @FXML
+    void back(ActionEvent event) throws IOException{
+        Parent managerParent = FXMLLoader.load(getClass().getResource(""));   //change when u have the manager scene
+        Scene managerScene = new Scene(managerParent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(managerScene);
+        window.show();
     }
 }
