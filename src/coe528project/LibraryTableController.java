@@ -50,8 +50,8 @@ public class LibraryTableController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Book Name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("Price"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("price"));
         for(int i = 0; i<Library.getInstance().getLibrary().size();i++){
             myLibrary.add(Library.getInstance().getLibrary().get(i));
         }
