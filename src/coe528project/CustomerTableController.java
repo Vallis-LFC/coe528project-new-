@@ -12,9 +12,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import java.net.URL;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
 import java.util.ResourceBundle;
+import javafx.scene.control.ButtonType;
+import java.io.IOException;
+import javafx.stage.Stage;
 
 public class CustomerTableController implements Initializable {
 
@@ -63,11 +71,12 @@ public class CustomerTableController implements Initializable {
     void addCustomer(ActionEvent event) {
         Customer customer = new Customer( usrInput.getText(),passInput.getText());
 
-        ObservableList<Customer> customers = tableView.getItems();;
+        ObservableList<Customer> customers = tableView.getItems();
         if(customer.verifyPassword()){
             customers.add(customer);
+            customer.addCustomer();
         }
-        customer.addCustomer();
+        
         tableView.setItems(customers);
     }
 
@@ -76,11 +85,16 @@ public class CustomerTableController implements Initializable {
         int selectedID = tableView.getSelectionModel().getSelectedIndex();
         Customer del = tableView.getItems().get(selectedID);
         tableView.getItems().remove(selectedID);
+        customers.remove(del);
         del.deleteCustomer();
     }
     
     @FXML
-    void returnScreen(ActionEvent event) {
-        
+    void back(ActionEvent event) throws IOException{
+        Parent managerParent = FXMLLoader.load(getClass().getResource(""));   //change when u have the manager scene
+        Scene managerScene = new Scene(managerParent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(managerScene);
+        window.show();
     }
 }
