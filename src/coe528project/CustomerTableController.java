@@ -33,8 +33,6 @@ public class CustomerTableController implements Initializable {
     private TableColumn<Customer, Integer> ptsColumn;
 
     //Text input
-    @FXML
-    private TextField nameInput;
     
     @FXML
     private TextField usrInput;
@@ -42,6 +40,7 @@ public class CustomerTableController implements Initializable {
     @FXML
     private TextField passInput;
 
+    @FXML
     private ObservableList<Customer> customers;
 
 
@@ -50,17 +49,24 @@ public class CustomerTableController implements Initializable {
         usrColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Username"));
         passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("Password"));
         ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("Points"));
+        Customer tmp = new Customer("","");
+        for(int i = 0; i<tmp.getCustomers().size();i++){
+            customers.add(tmp.getCustomers().get(i));
+        }
+          //makes a empty customer but since its not added into the list, doesnt matter
         
-        Customer tmp = new Customer("","","");  //makes a empty customer but since its not added into the list, doesnt matter
-        customers = tmp.getCustomers();
-        tableView.setItems(customers);
+        //tableView.setItems(customers);
     }
 
     //Submit button
     @FXML
     void addCustomer(ActionEvent event) {
-        Customer customer = new Customer(nameInput.getText(), usrInput.getText(),passInput.getText());
-        
+        Customer customer = new Customer( usrInput.getText(),passInput.getText());
+
+        ObservableList<Customer> customers = tableView.getItems();;
+        if(customer.verifyPassword()){
+            customers.add(customer);
+        }
         customer.addCustomer();
         tableView.setItems(customers);
     }
@@ -71,5 +77,10 @@ public class CustomerTableController implements Initializable {
         Customer del = tableView.getItems().get(selectedID);
         tableView.getItems().remove(selectedID);
         del.deleteCustomer();
+    }
+    
+    @FXML
+    void returnScreen(ActionEvent event) {
+        
     }
 }
