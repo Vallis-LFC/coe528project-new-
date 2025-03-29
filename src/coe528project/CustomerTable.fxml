@@ -25,9 +25,10 @@
         <TextField fx:id="usrInput" />
         <Text layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
         <TextField fx:id="passInput" />
+        <Button mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="200.0" text="Add" />
          </children>
       </VBox>
-       <Button layoutX="200.0" layoutY = "349.0" AnchorPane.bottomAnchor="100.0"  mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="200.0" text="Add" />
-      <Button layoutX="420.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#removeCustomer" prefHeight="25.0" prefWidth="200.0" text="Delete" />
+       <Button layoutX="450.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="200.0" text="Back" />
+      <Button layoutX="300.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#removeCustomer" prefHeight="25.0" prefWidth="200.0" text="Delete" />
    </children>
 </AnchorPane>
