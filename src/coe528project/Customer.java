@@ -27,15 +27,15 @@ import javafx.collections.ObservableList;
 public class Customer {
     private int points;
     //private CheckBox select;
-    private String name;
+    
     private String username;
     private String password;
-    private static ObservableList<Customer> customers ;
+    private static ArrayList<Customer> customers ;
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
-    public Customer(String name, String username, String password){
-        this.name = name;
+    public Customer(String username, String password){
+        
         this.username = username;
         this.password = password;
         this.points = 0; //starts at 0
@@ -44,8 +44,8 @@ public class Customer {
     }
     
  
-    public Customer(String name, String username, String password, int point){
-        this.name = name;
+    public Customer( String username, String password, int point){
+        
         this.username = username;
         this.password = password;
         this.points = point;
@@ -53,8 +53,11 @@ public class Customer {
         
     }
     
-    public void addCustomer(){
-        if(this.verifyPassword(this.password)==true){
+    public void addCustomer() throws NullPointerException{
+        if(customers.isEmpty()){
+            customers.add(this);
+        }
+        else if(this.verifyPassword()){
             customers.add(this);
         }
         else{
@@ -102,14 +105,14 @@ public class Customer {
         try{
             Scanner myReader = new Scanner(input);
             while(myReader.hasNextLine()){
-                String customerName = myReader.next();
+                
                 String usr = myReader.next();
                 String pass = myReader.next();
                 int p = myReader.nextInt();
-                customers.add( new Customer(customerName, usr, pass, p)); //adds to array and intializes the customer 
+                customers.add( new Customer( usr, pass, p)); //adds to array and intializes the customer 
                 myReader.nextLine();//increments to next line
             }
-            customers.add(new Customer("manager", "admin", "admin"));   //adds manager to the list for the login
+            customers.add(new Customer( "admin", "admin"));   //adds manager to the list for the login
         }
         catch(FileNotFoundException e){
             System.err.println("No File Found");
@@ -121,10 +124,10 @@ public class Customer {
         try {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<customers.size();i++){
-                if(customers.get(i).verifyPassword("admin")){   //skips the manager to put into the customer txt
+                if(!customers.get(i).verifyPassword()){   //skips the manager to put into the customer txt
                     continue;
                 }
-                updated.write(customers.get(i).getName()+"\t"+customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
+                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
             }
             updated.close();
             System.out.println("Customers updated");
@@ -181,7 +184,7 @@ public class Customer {
     
     public boolean findCustomer(){
         for(int i=0; i< customers.size();i++){
-            if(customers.get(i).getUsername().equals(this.username) && customers.get(i).getPassword().equals(this.password) && customers.get(i).getName().equals(this.name)){
+            if(customers.get(i).getUsername().equals(this.username) && customers.get(i).getPassword().equals(this.password) ){
                 return true;
             }
         }
@@ -193,25 +196,24 @@ public class Customer {
         return this.username;
     }
     
-    public String getName(){
-        return this.name;
-    }
+
     
     public String getPassword(){
         return this.password;
     }
     
-    public ObservableList<Customer> getCustomers(){
+    public ArrayList<Customer> getCustomers(){
         return this.customers;
     }
         
     
-    public boolean verifyPassword(String password){ //verifys a different password so that we can use same username
+    public boolean verifyPassword() throws NullPointerException{ //verifys a different password so that we can use same username
+
         for(int i = 0; i< customers.size();i++){
             if(customers.get(i).getPassword().equals("admin")){
                 return false;
             }
-            else if(customers.get(i).getPassword().equals(password)){
+            else if(customers.get(i).getPassword().equals(this.password)){
                 return false;
             }
         }
