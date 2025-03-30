@@ -53,6 +53,7 @@ public class Customer {
         
     }
     
+    
     public void addCustomer() throws NullPointerException{
         if(customers.isEmpty()){
             customers.add(this);
@@ -156,20 +157,23 @@ public class Customer {
         this.points +=p;
     }
     
-    public int minusPoint(int total){   //minus point and returns cost
+    
+    public int minusPoint(int total) {
+        int redeemablePoints = this.points;
+        int dollarValue = redeemablePoints * 100; // 1 point = $1
         
-        int redeemable = this.points*100;
-        
-        if (total-redeemable>=0){
+        if (dollarValue >= total) {
+            // Enough points to cover entire purchase
+            int pointsUsed = (int) Math.ceil(total / 100.0);
+            this.points -= pointsUsed;
+            return 0; // No remaining cost
+        } else {
+            // Only partial redemption
             this.points = 0;
-            return total-redeemable;
+            return total - dollarValue; // Return remaining cost
         }
-        
-        int p = total*100; //total cost of the books
-        this.points-= p;
-        return 0;
-        
     }
+    
     
     public int checkPoints(){
         return this.points;
@@ -229,8 +233,7 @@ public class Customer {
         return this.SelectedBooks;
     }
     
-    public void saveBooks(Library myLibrary){   //stay as is
-        this.SelectedBooks = myLibrary.selectBooks(); 
+    public void saveBooks(Library library) {
+        this.SelectedBooks = library.selectBooks(); // Update with current selection
     }
-    
 }
