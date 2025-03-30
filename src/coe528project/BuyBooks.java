@@ -42,15 +42,19 @@ public class BuyBooks {
         
     }
     
-    public void redeemAndBuy(Library myLibrary, Customer buyer, int total){
-        total = buyer.minusPoint(total);
-        if (total>0){
-            buyer.addPoint(total);
+    
+    public int redeemAndBuy(Library myLibrary, Customer buyer, int total) {
+        int remainingCost = buyer.minusPoint(total); // This now returns remaining cost
+        if (remainingCost > 0) {
+            buyer.addPoint(remainingCost); // Add points for remaining amount paid
         }
-        for(int i = 0; i<buyer.getSavedBooks().size(); i++){
-            myLibrary.deleteBooks(buyer.getSavedBooks().get(i));
+        
+        for (Book book : buyer.getSavedBooks()) {
+            myLibrary.deleteBooks(book);
         }
         buyer.getSavedBooks().clear();
-        Library.getInstance().clearCheckBoxes();
+        myLibrary.clearCheckBoxes();
+        
+        return remainingCost; // Return the remaining cost after redemption
     }
 }
