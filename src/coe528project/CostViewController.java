@@ -61,6 +61,7 @@ public class CostViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         cost.setText("Total Cost: "+totalCost);
         cost.setWrapText(true);
         cost.prefWidth(500);
