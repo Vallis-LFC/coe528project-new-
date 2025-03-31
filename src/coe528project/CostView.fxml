@@ -15,8 +15,8 @@
     <children>
     <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="500.0" spacing="5.0" alignment="CENTER">
          <children>
-        <Label fx:id = "cost" />
-        <Label fx:id = "ptstatus" />
+        <Label fx:id = "cost"  layoutX="50.0" layoutY="142.0" prefHeight="17.0" prefWidth="250.0">
+        <Label fx:id = "ptstatus"  layoutX="50.0" layoutY="200.0" prefHeight="17.0" prefWidth="250.0"/>
          </children>
       </VBox>
       <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
