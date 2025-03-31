@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.File;
 
 /*
  *
@@ -23,46 +24,37 @@ import java.io.FileReader;
  */
 public class Main extends Application {
     
-    private static ArrayList<String> Usernames;
-    private static ArrayList<String> Passwords;
     
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        File books = new File("books.txt");
+        File customers = new File("customers.txt");
+        Library.getInstance().readToFile(books);
+        Customer tmp = new Customer("","");
+        tmp.readToFile(customers);
         
-        Parent root = FXMLLoader.load(getClass().getResource("CustomerTable.fxml"));
+        
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
       
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("BookStore");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
     
-    private void read() {//read customers file to put usernames and passwords into array
-        BufferedReader reader = new BufferedReader(new FileReader("customers.txt"));
-        String line = reader.readLine();
-
-        while (line != null) {
-            
-            
-        }
-    }
+//    private void read() {//read customers file to put usernames and passwords into array
+//        BufferedReader reader = new BufferedReader(new FileReader("customers.txt"));
+//        String line = reader.readLine();
+//
+//        while (line != null) {
+//            
+//            
+//        }
+//    }
     
-    public static int verifyLogin (String u, String p){
-        int check = 0;
-        int i;
-        for (i=0; i < Usernames.size(); i++){
-            if(Usernames.get(0).equals(u) && Passwords.get(0).equals(p)){//i'm just assuming the first username and password in the array list belongs to the owner
-                check = 1;
-            }
-            if(Usernames.get(i).equals(u) && Passwords.get(i).equals(p)){
-                check = 2;
-            }
-        }
-        
-        return check;
-    }
+
     
     /**
      * @param args the command line arguments
