@@ -1,4 +1,3 @@
-
 package coe528project;
 
 import javafx.collections.FXCollections;
