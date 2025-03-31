@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.LoginScreenController">
+   <children>
+      <Button layoutX="448.0" layoutY="300.0" mnemonicParsing="false" text="Login" />
+      <TextArea layoutX="200.0" layoutY="123.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextArea layoutX="200.0" layoutY="200.0" prefHeight="26.0" prefWidth="200.0" />
+      <Text layoutX="114.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="71.69097900390625" />
+      <Text layoutX="114.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="71.69097900390625" />
+   </children>
+</AnchorPane>
