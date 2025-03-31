@@ -101,9 +101,9 @@ public class CustomerTableController implements Initializable {
     
     @FXML
     void back(ActionEvent event) throws IOException{
-        Parent managerParent = FXMLLoader.load(getClass().getResource(""));   //change when u have the manager scene
-        Scene managerScene = new Scene(managerParent);
+        Parent managerParent = FXMLLoader.load(getClass().getResource("OwnerView.fxml"));   //change when u have the manager scene
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene managerScene = new Scene(managerParent);
         window.setScene(managerScene);
         window.show();
     }
