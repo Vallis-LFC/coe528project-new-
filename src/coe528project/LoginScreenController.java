@@ -39,16 +39,22 @@ public abstract class LoginScreenController implements Initializable {
     @FXML
     private TextField passwordTextField;
     
+    public void initialise() {
+            
+    }  
+        
     public void SwitchToCustomerScreen(ActionEvent event) throws IOException{
         
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+        Customer c = new Customer(username, password);
+         
         
-        if(Main.verifyLogin(username, password) == 1){//trying to get the verify from main, plz help
+        if(!c.findCustomer()){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             root = loader.load();
         }
-        else if(Main.verifyLogin(username, password) == 2){
+        else if (){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             root = loader.load();
         }
