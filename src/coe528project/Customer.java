@@ -25,11 +25,12 @@ import javafx.collections.ObservableList;
  * @author vkhlu
  */
 public class Customer {
-    private int points;
+    
     //private CheckBox select;
     
     private String username;
     private String password;
+    private Integer points;
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
@@ -127,7 +128,7 @@ public class Customer {
                 if(!customers.get(i).verifyPassword()){   //skips the manager to put into the customer txt
                     continue;
                 }
-                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).checkPoints()); //no need for status since we can find it with points
+                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints()); //no need for status since we can find it with points
             }
             updated.close();
             System.out.println("Customers updated");
@@ -171,7 +172,7 @@ public class Customer {
         
     }
     
-    public int checkPoints(){
+    public int getPoints(){
         return this.points;
     }
     
@@ -219,7 +220,7 @@ public class Customer {
                     return false;
                 }
                 else if(customers.get(i).getPassword().equals(this.password)){
-                    System.out.println("vbr");
+                    
                     return false;
                 }
             }
