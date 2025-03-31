@@ -34,6 +34,7 @@ public class Customer {
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
+    private ArrayList<Customer> customerAdmin = new ArrayList<Customer>();
     
     public Customer(String username, String password){
         
@@ -111,9 +112,10 @@ public class Customer {
                 String pass = myReader.next();
                 int p = myReader.nextInt();
                 customers.add( new Customer( usr, pass, p)); //adds to array and intializes the customer 
+                customerAdmin.add(new Customer(usr, pass,p));
                 myReader.nextLine();//increments to next line
             }
-            customers.add(new Customer( "admin", "admin"));   //adds manager to the list for the login
+            //customerAdmin.add(new Customer( "admin", "admin"));   //adds manager to the list for the login
         }
         catch(FileNotFoundException e){
             System.err.println("No File Found");
