@@ -64,7 +64,7 @@ public class CostViewController implements Initializable {
         cost.setText("Total Cost: "+totalCost);
         cost.setWrapText(true);
         cost.prefWidth(500);
-        ptstatus.setText("Points: "+buyer.checkPoints()+ ", Status: "+buyer.checkStatus());
+        ptstatus.setText("Points: "+buyer.getPoints()+ ", Status: "+buyer.checkStatus());
         ptstatus.setWrapText(true);
         ptstatus.prefWidth(500);
     }   
