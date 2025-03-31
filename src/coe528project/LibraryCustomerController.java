@@ -72,7 +72,7 @@ public class LibraryCustomerController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.checkPoints()+" points. Your status is "+this.buyer.checkStatus());
+        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.getPoints()+" points. Your status is "+this.buyer.checkStatus());
         welcomeLabel.setWrapText(true);
         welcomeLabel.setPrefWidth(500);
         nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
