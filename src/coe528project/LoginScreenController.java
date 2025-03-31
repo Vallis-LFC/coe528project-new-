@@ -44,11 +44,11 @@ public abstract class LoginScreenController implements Initializable {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         
-        if(Coe528project.verifyLogin(username, password) == 1){//trying to get the verify from main, plz help
+        if(Main.verifyLogin(username, password) == 1){//trying to get the verify from main, plz help
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             root = loader.load();
         }
-        else if(Coe528project.verifyLogin(username, password) == 2){
+        else if(Main.verifyLogin(username, password) == 2){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             root = loader.load();
         }
