@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import java.util.ResourceBundle;
 import javafx.scene.control.ButtonType;
 import java.io.IOException;
+import java.lang.NullPointerException;
 import javafx.stage.Stage;
 
 public class CustomerTableController implements Initializable {
@@ -53,14 +54,17 @@ public class CustomerTableController implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) throws NullPointerException{
         usrColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("username"));
         passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("password"));
         ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("points"));
         Customer tmp = new Customer("","");
-        for(int i = 0; i<tmp.getCustomers().size();i++){
+        if(this.customers != null && !this.customers.isEmpty() ){
+            for(int i = 0; i<tmp.getCustomers().size();i++){
             customers.add(tmp.getCustomers().get(i));
         }
+        }
+   
           //makes a empty customer but since its not added into the list, doesnt matter
         
         //tableView.setItems(customers);
@@ -71,13 +75,19 @@ public class CustomerTableController implements Initializable {
     void addCustomer(ActionEvent event) {
         Customer customer = new Customer( usrInput.getText(),passInput.getText());
 
-        ObservableList<Customer> customers = tableView.getItems();
-        if(customer.verifyPassword()){
+        customers = tableView.getItems();
+        
+           if(customer.verifyPassword()){
             customers.add(customer);
             customer.addCustomer();
+            
         }
         
         tableView.setItems(customers);
+
+        
+        
+       
     }
 
     @FXML
