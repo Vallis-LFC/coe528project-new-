@@ -26,7 +26,6 @@ import java.lang.NullPointerException;
 import javafx.stage.Stage;
 
 public class CustomerTableController implements Initializable {
-
     //Table
     @FXML
     private TableView<Customer> tableView;
@@ -74,7 +73,7 @@ public class CustomerTableController implements Initializable {
     @FXML
     void addCustomer(ActionEvent event) {
         Customer customer = new Customer( usrInput.getText(),passInput.getText());
-
+        System.out.println(customer.getPoints());
         customers = tableView.getItems();
         
            if(customer.verifyPassword()){
@@ -84,6 +83,7 @@ public class CustomerTableController implements Initializable {
         }
         
         tableView.setItems(customers);
+        
 
         
         
