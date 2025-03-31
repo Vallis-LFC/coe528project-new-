@@ -30,7 +30,7 @@ public class Customer {
     
     private String username;
     private String password;
-    private static ArrayList<Customer> customers ;
+    private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
     
@@ -53,9 +53,8 @@ public class Customer {
         
     }
     
-    
     public void addCustomer() throws NullPointerException{
-        if(customers.isEmpty()){
+        if(customers == null){
             customers.add(this);
         }
         else if(this.verifyPassword()){
@@ -157,23 +156,20 @@ public class Customer {
         this.points +=p;
     }
     
-    
-    public int minusPoint(int total) {
-        int redeemablePoints = this.points;
-        int dollarValue = redeemablePoints * 100; // 1 point = $1
+    public int minusPoint(int total){   //minus point and returns cost
         
-        if (dollarValue >= total) {
-            // Enough points to cover entire purchase
-            int pointsUsed = (int) Math.ceil(total / 100.0);
-            this.points -= pointsUsed;
-            return 0; // No remaining cost
-        } else {
-            // Only partial redemption
+        int redeemable = this.points*100;
+        
+        if (total-redeemable>=0){
             this.points = 0;
-            return total - dollarValue; // Return remaining cost
+            return total-redeemable;
         }
+        
+        int p = total*100; //total cost of the books
+        this.points-= p;
+        return 0;
+        
     }
-    
     
     public int checkPoints(){
         return this.points;
@@ -207,20 +203,28 @@ public class Customer {
     }
     
     public ArrayList<Customer> getCustomers(){
-        return this.customers;
+
+            return this.customers;
+            
+           
+
+
     }
         
     
     public boolean verifyPassword() throws NullPointerException{ //verifys a different password so that we can use same username
+        if(this.customers != null && !this.customers.isEmpty() ){
+            for(int i = 0; i< customers.size();i++){
+                if(customers.get(i).getPassword().equals("admin")){
+                    return false;
+                }
+                else if(customers.get(i).getPassword().equals(this.password)){
+                    System.out.println("vbr");
+                    return false;
+                }
+            }
+        }   
 
-        for(int i = 0; i< customers.size();i++){
-            if(customers.get(i).getPassword().equals("admin")){
-                return false;
-            }
-            else if(customers.get(i).getPassword().equals(this.password)){
-                return false;
-            }
-        }
         return true;
     }
     
@@ -233,7 +237,8 @@ public class Customer {
         return this.SelectedBooks;
     }
     
-    public void saveBooks(Library library) {
-        this.SelectedBooks = library.selectBooks(); // Update with current selection
+    public void saveBooks(Library myLibrary){   //stay as is
+        this.SelectedBooks = myLibrary.selectBooks(); 
     }
+    
 }
