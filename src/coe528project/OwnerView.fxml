@@ -7,5 +7,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.OwnerViewController">
-    
+     <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="500.0" spacing="5.0" alignment="CENTER">
+         <children>
+              <Button  mnemonicParsing="false" onAction="#libraryButton" prefHeight="25.0" prefWidth="200.0" text="Logout" />
+              <Button  mnemonicParsing="false" onAction="#customerButton" prefHeight="25.0" prefWidth="200.0" text="Customers" />
+            <Button  mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
+         </children>
+      </VBox>
 </AnchorPane>
