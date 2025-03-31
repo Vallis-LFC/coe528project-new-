@@ -36,8 +36,8 @@ public class OwnerViewController implements Initializable {
      @FXML
     void customerButton(ActionEvent event) throws IOException{
         Parent managerParent = FXMLLoader.load(getClass().getResource("LibraryCustomer.fxml"));   //change when u have the manager scene
-        Scene managerScene = new Scene(managerParent);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene managerScene = new Scene(managerParent);
         window.setScene(managerScene);
         window.show();
     }
@@ -45,8 +45,8 @@ public class OwnerViewController implements Initializable {
     @FXML
     void libraryButton(ActionEvent event) throws IOException{
         Parent managerParent = FXMLLoader.load(getClass().getResource("LibraryTable.fxml"));   //change when u have the manager scene
-        Scene managerScene = new Scene(managerParent);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene managerScene = new Scene(managerParent);
         window.setScene(managerScene);
         window.show();
     }
@@ -60,9 +60,9 @@ public class OwnerViewController implements Initializable {
         alert.setContentText("the books selected will be saved when you leave");
         if(alert.showAndWait().get()==ButtonType.OK){
             Library.getInstance().writeToFile("");  //change file name
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource(""));   //login screen
-            Scene loginScene = new Scene(tableViewParent);
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene loginScene = new Scene(tableViewParent);
             window.setScene(loginScene);
             window.show();
             
