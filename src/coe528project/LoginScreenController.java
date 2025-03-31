@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author viern
  */
-public abstract class LoginScreenController implements Initializable {
+public class LoginScreenController implements Initializable {
     
     private Stage stage;
     private Scene scene;
@@ -39,9 +39,11 @@ public abstract class LoginScreenController implements Initializable {
     @FXML
     private TextField passwordTextField;
     
-    public void initialise() {
-            
-    }  
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //
+    }   
         
     public void SwitchToCustomerScreen(ActionEvent event) throws IOException{
         
@@ -50,16 +52,16 @@ public abstract class LoginScreenController implements Initializable {
         Customer c = new Customer(username, password);
          
         
-        if(!c.findCustomer()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
+        if(c.getUsername().equals("admin") && c.getPassword().equals("admin")){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("OwnerView.fxml"));
             root = loader.load();
         }
-        else if (){
+        else if (c.findCustomer() == true){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             root = loader.load();
         }
         else{ //window pop up for incorrect user and pass combination
-            
+            System.err.println("Wrong login");
         }
         
         
