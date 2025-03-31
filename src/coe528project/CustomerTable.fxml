@@ -8,18 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.CustomerTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.CustomerTableController">
    <children>
 <!--       <Text strokeType="OUTSIDE" AnchorPane.topAnchor="10.0" text="Customers"  />-->
-      <TableView AnchorPane.topAnchor="10.0" fx:id="tableView"  prefHeight="150.0" prefWidth="150.0">
+      <TableView fx:id="tableView" layoutX="50.0" layoutY="79.2" prefHeight="250.0" prefWidth="222.0" AnchorPane.topAnchor="79.0">
         <columns>
           <TableColumn fx:id="usrColumn" prefWidth="75.0" text="Username" />
           <TableColumn fx:id="passColumn" prefWidth="75.0" text="Password" />
             <TableColumn fx:id="ptsColumn" prefWidth="75.0" text="Points" />
         </columns>
       </TableView>
-      <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
+      <VBox layoutX="324.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
          <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
         <TextField fx:id="usrInput" />
@@ -28,7 +27,7 @@
         <Button mnemonicParsing="false" onAction="#addCustomer" prefHeight="25.0" prefWidth="200.0" text="Add" />
          </children>
       </VBox>
-       <Button layoutX="450.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="200.0" text="Back" />
-      <Button layoutX="300.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#removeCustomer" prefHeight="25.0" prefWidth="200.0" text="Delete" />
+       <Button layoutX="324.0" layoutY="298.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="200.0" text="Back" AnchorPane.bottomAnchor="76.39999999999998" />
+      <Button layoutX="324.0" layoutY="261.0" mnemonicParsing="false" onAction="#removeCustomer" prefHeight="25.0" prefWidth="200.0" text="Delete" AnchorPane.bottomAnchor="113.39999999999998" />
    </children>
 </AnchorPane>
