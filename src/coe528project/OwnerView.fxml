@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.OwnerViewController">
-     <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="500.0" spacing="5.0" alignment="CENTER">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="coe528project.OwnerViewController">
+     <VBox alignment="CENTER" layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="500.0" spacing="5.0">
          <children>
-              <Button  mnemonicParsing="false" onAction="#libraryButton" prefHeight="25.0" prefWidth="200.0" text="Logout" />
-              <Button  mnemonicParsing="false" onAction="#customerButton" prefHeight="25.0" prefWidth="200.0" text="Customers" />
-            <Button  mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
+              <Button mnemonicParsing="false" onAction="#libraryButton" prefHeight="25.0" prefWidth="200.0" text="Library" />
+              <Button mnemonicParsing="false" onAction="#customerButton" prefHeight="25.0" prefWidth="200.0" text="Customers" />
+            <Button mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
          </children>
       </VBox>
 </AnchorPane>
