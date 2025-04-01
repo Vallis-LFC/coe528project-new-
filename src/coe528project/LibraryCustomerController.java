@@ -162,9 +162,9 @@ public class LibraryCustomerController implements Initializable {
         alert.setHeaderText("You are about to log out");
         alert.setContentText("the books selected will be saved when you leave");
         if(alert.showAndWait().get()==ButtonType.OK){
-            buyer.writeToFile("");      //change file name
-            Library.getInstance().writeToFile("");  //change file name
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource(""));   //login screen
+            buyer.writeToFile("customers.txt");      //change file name
+            Library.getInstance().writeToFile("books.txt");  //change file name
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Scene loginScene = new Scene(tableViewParent);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
