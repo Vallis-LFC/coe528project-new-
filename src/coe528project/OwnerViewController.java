@@ -61,6 +61,7 @@ public class OwnerViewController implements Initializable {
         if(alert.showAndWait().get()==ButtonType.OK){
             Library.getInstance().writeToFile("books.txt");  //change file name
             Customer tmp = new Customer("","");
+            
             tmp.writeToFile("customers.txt");
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
