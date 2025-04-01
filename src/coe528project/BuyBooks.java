@@ -26,13 +26,16 @@ public class BuyBooks {
         int total = 0;
         
         for(int i = 0; i<buyer.getSavedBooks().size();i++){
+            //System.out.println(buyer.getSavedBooks().get(i).getPrice());
             total+=buyer.getSavedBooks().get(i).getPrice();
         }
+        System.out.println(total);
         return total;
     }
     
     public void buy(Library myLibrary, Customer buyer, int total){
         buyer.addPoint(total);
+        System.out.println(buyer.getPoints());
         for(int i = 0; i<buyer.getSavedBooks().size(); i++){
             myLibrary.deleteBooks(buyer.getSavedBooks().get(i));
         }
