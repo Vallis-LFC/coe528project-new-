@@ -62,7 +62,8 @@ public class LoginScreenController implements Initializable {
             
         }
         else if (c.findCustomer() == true){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerTable.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
+            System.out.println("in");
 		LibraryCustomerController controller = loader.getController();
 		controller.initData(c);
                root = loader.load();
