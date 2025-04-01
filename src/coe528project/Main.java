@@ -35,7 +35,7 @@ public class Main extends Application {
         tmp.readToFile(customers);
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("OwnerView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
       
         
