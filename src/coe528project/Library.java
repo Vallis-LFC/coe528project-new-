@@ -32,10 +32,12 @@ public class Library {
     }
     
     public boolean verifyBooks(Book toBeVerified){  //i believe verifybooks is to check if book is in arraylist
-        for(int i = 0; i< myLibrary.size(); i++){
-            Book current = myLibrary.get(i);
-            if((current.getName()).equals(toBeVerified.getName()) && current.getPrice() == toBeVerified.getPrice()){
-                return true;
+        if(this.myLibrary != null && !this.myLibrary.isEmpty() ){
+            for(int i = 0; i< myLibrary.size(); i++){
+                Book current = myLibrary.get(i);
+                if((current.getName()).equals(toBeVerified.getName()) && current.getPrice() == toBeVerified.getPrice()){
+                    return true;
+                }
             }
         }
         return false;   //change
