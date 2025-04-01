@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  */
 public class Book {
     private String name;
-    private int price;
+    private Integer price;
     private CheckBox selected;
     
     public Book(String name, int price){
