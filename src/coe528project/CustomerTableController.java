@@ -60,12 +60,14 @@ public class CustomerTableController implements Initializable {
         Customer tmp = new Customer("","");
         if(this.customers != null && !this.customers.isEmpty() ){
             for(int i = 0; i<tmp.getCustomers().size();i++){
-            customers.add(tmp.getCustomers().get(i));
+                customers.add(tmp.getCustomers().get(i));
+            }
         }
-        }
-   
+	else{
+            System.out.println("null");
           //makes a empty customer but since its not added into the list, doesnt matter
-        
+          
+        }
         //tableView.setItems(customers);
     }
 
@@ -77,17 +79,13 @@ public class CustomerTableController implements Initializable {
         customers = tableView.getItems();
         
            if(customer.verifyPassword()){
-            customers.add(customer);
-            customer.addCustomer();
+                customers.add(customer);
+                customer.addCustomer();
             
-        }
+            }
         
         tableView.setItems(customers);
         
-
-        
-        
-       
     }
 
     @FXML
