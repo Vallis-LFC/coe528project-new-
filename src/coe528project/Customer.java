@@ -33,7 +33,7 @@ public class Customer {
     private Integer points;
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private String[] Status = {"Silver", "Gold"};
-    private ArrayList<Book> SelectedBooks;
+    private ArrayList<Book> SelectedBooks = new ArrayList<Book>();
    // private ArrayList<Customer> customerAdmin = new ArrayList<Customer>();
     public Customer(){
         this.username = "default";
@@ -169,7 +169,7 @@ public class Customer {
     
     public int minusPoint(int total){   //minus point and returns cost
         
-        int redeemable = this.points*100;
+        int redeemable = (this.points-this.points%100)/100;
         
         if (total-redeemable>=0){
             this.points = 0;
@@ -201,6 +201,16 @@ public class Customer {
         }
         //System.err.println("No such customer found");
         return false;
+    }
+    
+    public Customer getCustomer(){
+        for(int i=0; i< customers.size();i++){
+            if(customers.get(i).getUsername().equals(this.username) && customers.get(i).getPassword().equals(this.password) ){
+                return customers.get(i);
+            }
+        }
+        System.err.println("No such customer found");
+        return null;
     }
     
     public String getUsername(){
