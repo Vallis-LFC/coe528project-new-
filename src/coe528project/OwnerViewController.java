@@ -35,7 +35,7 @@ public class OwnerViewController implements Initializable {
     
      @FXML
     void customerButton(ActionEvent event) throws IOException{
-        Parent managerParent = FXMLLoader.load(getClass().getResource("LibraryCustomer.fxml"));   //change when u have the manager scene
+        Parent managerParent = FXMLLoader.load(getClass().getResource("CustomerTable.fxml"));   //change when u have the manager scene
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene managerScene = new Scene(managerParent);
         window.setScene(managerScene);
