@@ -44,26 +44,36 @@ public class LoginScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //
     }   
-        
-    public void SwitchToCustomerScreen(ActionEvent event) throws IOException{
+    
+    @FXML
+    void SwitchToCustomerScreen(ActionEvent event) throws IOException{
         
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         Customer c = new Customer(username, password);
          
-        
+        System.out.println(username);
+        System.out.println(password);
         if(username.equals("admin") && password.equals("admin")){
-            root = FXMLLoader.load(getClass().getResource("OwnerView.fxml"));
+            System.out.println("test");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("OwnerView.fxml"));
+            root = loader.load();
+            
+            
         }
         else if (c.findCustomer() == true){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerTable.fxml"));
 		LibraryCustomerController controller = loader.getController();
 		controller.initData(c);
-            root = loader.load();
+               root = loader.load();
+            
         }
         else{ //window pop up for incorrect user and pass combination
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
             System.err.println("Wrong login");
+            root = loader.load();
         }
+        
         
         
         //Parent root = FXMLLoader.load(getClass().getResource("LibraryCustomer.fxml"));
