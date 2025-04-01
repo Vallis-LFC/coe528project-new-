@@ -48,12 +48,20 @@ public class CostViewController implements Initializable {
      */
     private Customer buyer;
     private int totalCost;
+    @FXML
     private Label cost;
+    @FXML
     private Label ptstatus;
     
     public void initData(int cost, Customer customer ){   //use this on the login screen so we can get info about the customer if login succeeds so the state mode actually
         this.buyer = customer;
        this.totalCost = cost;
+        this.cost.setText("Total Cost: "+totalCost);
+        this.cost.setWrapText(true);
+        this.cost.prefWidth(500);
+        ptstatus.setText("Points: "+buyer.getPoints()+ ", Status: "+buyer.checkStatus());
+        ptstatus.setWrapText(true);
+        ptstatus.prefWidth(500);
     }
     
     
@@ -62,12 +70,7 @@ public class CostViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        cost.setText("Total Cost: "+totalCost);
-        cost.setWrapText(true);
-        cost.prefWidth(500);
-        ptstatus.setText("Points: "+buyer.getPoints()+ ", Status: "+buyer.checkStatus());
-        ptstatus.setWrapText(true);
-        ptstatus.prefWidth(500);
+        
     }   
     
     @FXML
@@ -77,9 +80,9 @@ public class CostViewController implements Initializable {
         alert.setHeaderText("You are about to log out");
         alert.setContentText("the books selected will be saved when you leave");
         if(alert.showAndWait().get()==ButtonType.OK){
-            buyer.writeToFile("");      //change file name
-            Library.getInstance().writeToFile("");  //change file name
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource(""));   //login screen
+            buyer.writeToFile("customers.txt");      //change file name
+            Library.getInstance().writeToFile("books.txt");  //change file name
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Scene loginScene = new Scene(tableViewParent);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
