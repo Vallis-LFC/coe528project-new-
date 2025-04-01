@@ -55,17 +55,18 @@ public class LibraryTableController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("price"));
-        if(this.myLibrary != null && !this.myLibrary.isEmpty() ){
+        //if(this.myLibrary != null && !this.myLibrary.isEmpty() ){
             for(int i = 0; i<Library.getInstance().getLibrary().size();i++){
+                //System.out.println()
                 myLibrary.add(Library.getInstance().getLibrary().get(i));
                 
             }
-        }
-	else{
-		System.out.println("null");
+        
+	
+		//System.out.println("null");
           //makes a empty customer but since its not added into the list, doesnt matter
           
-        }
+        
         
         tableView.setItems(myLibrary);
         
@@ -77,7 +78,7 @@ public class LibraryTableController implements Initializable {
         Book b = new Book(nameInput.getText(), Integer.parseInt(priceInput.getText()));
         myLibrary = tableView.getItems();
         
-        
+        System.out.println("here");
         if (Library.getInstance().verifyBooks(b)){
             myLibrary.add(b);
             Library.getInstance().addBooks(b);}
