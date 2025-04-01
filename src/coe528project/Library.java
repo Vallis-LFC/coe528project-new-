@@ -60,12 +60,13 @@ public class Library {
     public void readToFile(File input) throws FileNotFoundException{
         try{
             Scanner myReader = new Scanner(input);
-            while(myReader.hasNextLine()){
+            while(myReader.hasNextLine() && myReader.hasNext()){
                 String name = myReader.next();
                 int price = myReader.nextInt();
                 myLibrary.add(new Book(name, price));
-                myReader.nextLine();
+                //myReader.nextLine();
             }
+            myReader.close();
         }
         catch(FileNotFoundException e){
             System.err.println("No File Found");
