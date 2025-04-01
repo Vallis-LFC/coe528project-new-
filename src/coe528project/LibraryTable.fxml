@@ -8,18 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.LibraryTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.LibraryTableController">
    <children>
 <!--       <Text strokeType="OUTSIDE" AnchorPane.topAnchor="10.0" text="Library"  />-->
-      <TableView AnchorPane.topAnchor="10.0" fx:id="tableView" prefHeight="150.0" prefWidth="150.0">
+      <TableView fx:id="tableView" layoutX="70.0" layoutY="61.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.topAnchor="61.0">
         <columns>
           <TableColumn fx:id="usrColumn" prefWidth="75.0" text="Book Name" />
           <TableColumn fx:id="passColumn" prefWidth="75.0" text="Price" />
            
         </columns>
       </TableView>
-      <VBox layoutX="68.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
+      <VBox layoutX="332.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
          <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book Name" />
         <TextField fx:id="nameInput" />
@@ -28,7 +27,7 @@
         <Button mnemonicParsing="false" onAction="#addBook" prefHeight="25.0" prefWidth="200.0" text="Add" />
          </children>
       </VBox>
-       <Button layoutX="450.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="200.0" text="Back" />
-      <Button layoutX="300.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#removeBook" prefHeight="25.0" prefWidth="200.0" text="Delete" />
+       <Button layoutX="332.0" layoutY="310.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="200.0" text="Back" AnchorPane.bottomAnchor="64.39999999999998" />
+      <Button layoutX="332.0" layoutY="268.0" mnemonicParsing="false" onAction="#removeBook" prefHeight="25.0" prefWidth="200.0" text="Delete" AnchorPane.bottomAnchor="106.39999999999998" />
    </children>
 </AnchorPane>
