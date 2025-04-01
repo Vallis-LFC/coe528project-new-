@@ -34,7 +34,7 @@ public class Customer {
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private String[] Status = {"Silver", "Gold"};
     private ArrayList<Book> SelectedBooks;
-    private ArrayList<Customer> customerAdmin = new ArrayList<Customer>();
+   // private ArrayList<Customer> customerAdmin = new ArrayList<Customer>();
     
     public Customer(String username, String password){
         
@@ -110,16 +110,19 @@ public class Customer {
                 
                 String usr = myReader.next();
                 String pass = myReader.next();
-                int p = myReader.nextInt();
+                int p = Integer.parseInt(myReader.next());
+                //System.out.println(usr+pass+p);
                 customers.add( new Customer( usr, pass, p)); //adds to array and intializes the customer 
-                customerAdmin.add(new Customer(usr, pass,p));
-                myReader.nextLine();//increments to next line
+                
+                //myReader.nextLine();//increments to next line
             }
+            myReader.close();
             //customerAdmin.add(new Customer( "admin", "admin"));   //adds manager to the list for the login
         }
         catch(FileNotFoundException e){
             System.err.println("No File Found");
         }
+        
 
         
     }
@@ -127,10 +130,11 @@ public class Customer {
         try {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<customers.size();i++){
-                if(!customers.get(i).verifyPassword()){   //skips the manager to put into the customer txt
-                    continue;
-                }
-                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints()); //no need for status since we can find it with points
+//                if(!customers.get(i).verifyPassword()){   //skips the manager to put into the customer txt
+//                    continue;
+//                }
+                System.out.println(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints());
+                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints()+" \n"); //no need for status since we can find it with points
             }
             updated.close();
             System.out.println("Customers updated");
@@ -141,14 +145,14 @@ public class Customer {
         }
     }
     
-    public void clearFile(File input) throws IOException{
-        if(input.delete()){
-            input.createNewFile();
-        }
-        else{
-            throw new IOException("File not found");
-        }
-    }
+//    public void clearFile(File input) throws IOException{
+//        if(input.delete()){
+//            input.createNewFile();
+//        }
+//        else{
+//            throw new IOException("File not found");
+//        }
+//    }
     
     public String toString(){   //i lk forgor why we need a toString()
         return this.username+this.password;
