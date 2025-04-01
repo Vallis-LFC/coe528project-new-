@@ -78,6 +78,7 @@ public class Library {
         try {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<myLibrary.size();i++){
+                System.out.println(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice());
                 updated.write(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice());
             }
             updated.close();
