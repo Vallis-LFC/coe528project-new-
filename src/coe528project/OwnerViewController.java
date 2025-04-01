@@ -57,9 +57,11 @@ public class OwnerViewController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
         alert.setHeaderText("You are about to log out");
-        alert.setContentText("the books selected will be saved when you leave");
+        //alert.setContentText("the books selected will be saved when you leave");
         if(alert.showAndWait().get()==ButtonType.OK){
-            Library.getInstance().writeToFile("");  //change file name
+            Library.getInstance().writeToFile("books.txt");  //change file name
+            Customer tmp = new Customer("","");
+            tmp.writeToFile("customers.txt");
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene loginScene = new Scene(tableViewParent);
