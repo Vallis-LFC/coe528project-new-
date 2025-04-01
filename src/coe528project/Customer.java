@@ -106,12 +106,12 @@ public class Customer {
     public void readToFile(File input) throws FileNotFoundException{
         try{
             Scanner myReader = new Scanner(input);
-            while(myReader.hasNextLine()){
+            while(myReader.hasNextLine() && myReader.hasNext()){
                 
                 String usr = myReader.next();
                 String pass = myReader.next();
                 int p = Integer.parseInt(myReader.next());
-                //System.out.println(usr+pass+p);
+                System.out.println(usr+pass+p);
                 customers.add( new Customer( usr, pass, p)); //adds to array and intializes the customer 
                 
                 //myReader.nextLine();//increments to next line
@@ -134,7 +134,7 @@ public class Customer {
 //                    continue;
 //                }
                 System.out.println(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints());
-                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints()+" \n"); //no need for status since we can find it with points
+                updated.write(customers.get(i).getUsername()+"\t"+customers.get(i).getPassword()+"\t"+customers.get(i).getPoints()+"\n"); //no need for status since we can find it with points
             }
             updated.close();
             System.out.println("Customers updated");
