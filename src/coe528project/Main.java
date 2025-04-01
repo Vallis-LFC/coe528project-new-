@@ -34,6 +34,7 @@ public class Main extends Application {
         Customer tmp = new Customer("","");
         tmp.readToFile(customers);
         
+        //tmp.clearFile(books);
         
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
