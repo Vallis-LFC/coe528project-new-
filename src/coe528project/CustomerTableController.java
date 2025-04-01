@@ -24,6 +24,7 @@ import javafx.scene.control.ButtonType;
 import java.io.IOException;
 import java.lang.NullPointerException;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
 
 public class CustomerTableController implements Initializable {
     //Table
@@ -49,7 +50,7 @@ public class CustomerTableController implements Initializable {
     private TextField passInput;
 
     @FXML
-    private ObservableList<Customer> customers;
+    private ObservableList<Customer> customers = FXCollections.observableArrayList();
 
 
     @Override
@@ -58,17 +59,18 @@ public class CustomerTableController implements Initializable {
         passColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("password"));
         ptsColumn.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("points"));
         Customer tmp = new Customer("","");
-        if(this.customers != null && !this.customers.isEmpty() ){
+        //if(this.customers != null && !this.customers.isEmpty() ){
             for(int i = 0; i<tmp.getCustomers().size();i++){
+                System.out.println(tmp.getCustomers().get(i).getUsername());
                 customers.add(tmp.getCustomers().get(i));
             }
-        }
-	else{
-            System.out.println("null");
+        //}
+	//else{
+            //System.out.println("null");
           //makes a empty customer but since its not added into the list, doesnt matter
           
-        }
-        //tableView.setItems(customers);
+       // }
+        tableView.setItems(customers);
     }
 
     //Submit button
