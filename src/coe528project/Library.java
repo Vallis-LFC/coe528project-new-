@@ -36,15 +36,15 @@ public class Library {
             for(int i = 0; i< myLibrary.size(); i++){
                 Book current = myLibrary.get(i);
                 if((current.getName()).equals(toBeVerified.getName()) && current.getPrice() == toBeVerified.getPrice()){
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;   //change
+        return true;   //change
     }
     
     public void deleteBooks(Book d){
-        if(this.verifyBooks(d)){
+        if(!this.verifyBooks(d)){
             myLibrary.remove(d);
         }
         
