@@ -78,10 +78,14 @@ public class LibraryTableController implements Initializable {
         Book b = new Book(nameInput.getText(), Integer.parseInt(priceInput.getText()));
         myLibrary = tableView.getItems();
         
-        System.out.println("here");
+        //System.out.println("here");
         if (Library.getInstance().verifyBooks(b)){
+            System.out.println(b.getName());
             myLibrary.add(b);
-            Library.getInstance().addBooks(b);}
+            Library.getInstance().addBooks(b);
+            
+        }
+        
         tableView.setItems(myLibrary);
         
     }
