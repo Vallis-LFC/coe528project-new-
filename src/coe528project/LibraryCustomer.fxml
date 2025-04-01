@@ -13,11 +13,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coe528project.LibraryCustomerController">
    <children>
        <Label AnchorPane.topAnchor="10.0" fx:id="welcomeLabel" alignment="TOP_CENTER"/>
-       <TableView fx:id="tableView" layoutX="100.0" layoutY="73.0" prefHeight="150.0" prefWidth="150.0">
+       <TableView fx:id="BookView" layoutX="100.0" layoutY="73.0" prefHeight="150.0" prefWidth="150.0">
         <columns>
-          <TableColumn fx:id="usrColumn" prefWidth="75.0" text="Book Price" />
-          <TableColumn fx:id="passColumn" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="ptsColumn" prefWidth="75.0" text="Select" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Book Price" />
+          <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="selectColumn" prefWidth="75.0" text="Select" />
         </columns>
       </TableView>
       <Button layoutX="150.0" layoutY="349.0" AnchorPane.bottomAnchor="100.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Logout" />
