@@ -60,19 +60,19 @@ public class LibraryCustomerController implements Initializable {
     private Label welcomeLabel;
     //private TextField priceInput;
 
-    private Customer buyer;
+    private Customer buyer = new Customer();
     
     private ObservableList<Book> myLibrary;
 
 
     public void initData(Customer customer ){   //use this on the login screen so we can get info about the customer if login succeeds so the state mode actually
         this.buyer = customer;
-        
+        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.getPoints()+" points. Your status is "+this.buyer.checkStatus());
     }
     
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.getPoints()+" points. Your status is "+this.buyer.checkStatus());
+    public void initialize(URL url, ResourceBundle resourceBundle) throws NullPointerException {
+        
         welcomeLabel.setWrapText(true);
         welcomeLabel.setPrefWidth(500);
         nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
