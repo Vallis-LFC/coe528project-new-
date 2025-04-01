@@ -50,8 +50,9 @@ public class LoginScreenController implements Initializable {
         
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        Customer c = new Customer(username, password);
-         
+        Customer c = new Customer();
+        c.setUsername(username);
+        c.setPassword(password);
         System.out.println(username);
         System.out.println(password);
         if(username.equals("admin") && password.equals("admin")){
@@ -62,11 +63,12 @@ public class LoginScreenController implements Initializable {
             
         }
         else if (c.findCustomer() == true){
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
             System.out.println("in");
-		LibraryCustomerController controller = loader.getController();
-		controller.initData(c);
-               root = loader.load();
+            root = loader.load();
+            LibraryCustomerController controller = loader.getController();
+            controller.initData(c);
             
         }
         else{ //window pop up for incorrect user and pass combination
