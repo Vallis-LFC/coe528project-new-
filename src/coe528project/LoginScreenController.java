@@ -52,12 +52,13 @@ public class LoginScreenController implements Initializable {
         Customer c = new Customer(username, password);
          
         
-        if(c.getUsername().equals("admin") && c.getPassword().equals("admin")){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("OwnerView.fxml"));
-            root = loader.load();
+        if(username.equals("admin") && password.equals("admin")){
+            root = FXMLLoader.load(getClass().getResource("OwnerView.fxml"));
         }
         else if (c.findCustomer() == true){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LibraryCustomer.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerTable.fxml"));
+		LibraryCustomerController controller = loader.getController();
+		controller.initData(c);
             root = loader.load();
         }
         else{ //window pop up for incorrect user and pass combination
