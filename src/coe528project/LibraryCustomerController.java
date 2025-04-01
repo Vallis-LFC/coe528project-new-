@@ -39,7 +39,7 @@ public class LibraryCustomerController implements Initializable {
     //Library temp;
     //Table
     @FXML
-    private TableView<Book> tableView;
+    private TableView<Book> BookView;
 
     //Columns
     @FXML
@@ -50,69 +50,82 @@ public class LibraryCustomerController implements Initializable {
     private TableColumn<Book, Integer> priceColumn;
     
     @FXML
-    private TableColumn<Book, CheckBox> selectColumn;
+    private TableColumn<Book, String> selectColumn;
 
     //Text input
-    @FXML
-    private TextField nameInput;
+//    @FXML
+//    private TextField nameInput;
     
     @FXML
     private Label welcomeLabel;
     //private TextField priceInput;
 
-    private Customer buyer = new Customer();
+    private Customer buyer;
     
-    private ObservableList<Book> myLibrary;
+    @FXML
+    private static ObservableList<Book> myLibrary = FXCollections.observableArrayList() ;
 
-
+    @FXML
     public void initData(Customer customer ){   //use this on the login screen so we can get info about the customer if login succeeds so the state mode actually
         this.buyer = customer;
-        welcomeLabel.setText("Welcome "+this.buyer.getUsername()+". You have "+this.buyer.getPoints()+" points. Your status is "+this.buyer.checkStatus());
+        System.out.println(this.buyer.getPoints());
+        welcomeLabel.setText("Welcome "+this.buyer.getCustomer().getUsername()+". You have "+this.buyer.getCustomer().getPoints()+" points. Your status is "+this.buyer.getCustomer().checkStatus());
+        welcomeLabel.setWrapText(true);
+        welcomeLabel.setPrefWidth(500);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) throws NullPointerException {
         
-        welcomeLabel.setWrapText(true);
-        welcomeLabel.setPrefWidth(500);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("price"));
-        selectColumn.setCellValueFactory(new PropertyValueFactory<Book, CheckBox>("selected"));
+        
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        selectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("selected"));
         for(int i = 0; i<Library.getInstance().getLibrary().size();i++){    //change to remove selected books
             myLibrary.add(Library.getInstance().getLibrary().get(i));
         }
-        tableView.setItems(myLibrary);
+        BookView.setItems(myLibrary);
     }
 
     //Submit button
     @FXML
     void buy(ActionEvent event) throws IOException{
-        buyer.saveBooks(Library.getInstance()); //checks for the check boxes
+        int cost = 0;
+        buyer.getCustomer().saveBooks(Library.getInstance());
+        //buyer.saveBooks(Library.getInstance());//checks for the check boxes
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("confirm checkout");
         alert.setHeaderText("You are about to pay");
         alert.setContentText("the books selected will be saved if you leave now");
         if(alert.showAndWait().get()==ButtonType.OK){
             //check if books are still available
-            for(int i = 0;i<buyer.getSavedBooks().size();i++){
-                if(!Library.getInstance().verifyBooks(buyer.getSavedBooks().get(i))){
-                    buyer.getSavedBooks().remove(i);
-                    System.out.println("Out of this book :"+buyer.getSavedBooks().get(i).getName());
+            
+            for(int i = 0;i<buyer.getCustomer().getSavedBooks().size();i++){
+                if(Library.getInstance().verifyBooks(buyer.getCustomer().getSavedBooks().get(i))){
+                    buyer.getCustomer().getSavedBooks().remove(i);
+                    System.out.println("Out of this book :"+buyer.getCustomer().getSavedBooks().get(i).getName());
                 }
             }
+           
             
-            
-            int cost = BuyBooks.getInstance().totalCost(buyer);
-            BuyBooks.getInstance().buy(Library.getInstance(), buyer, cost);
-            tableView.setItems(myLibrary);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("CostView.fxml"));     //buy-screen
-            Parent CostParent = loader.load();
-            Scene costScene = new Scene(CostParent);
+            cost = BuyBooks.getInstance().totalCost(buyer.getCustomer());
+            BuyBooks.getInstance().buy(Library.getInstance(), buyer.getCustomer(), cost);
+            ObservableList<Book> removed = FXCollections.observableArrayList();
+            for(Book b: myLibrary){
+                if(b.checkSelected()){
+                    removed.add(b);
+                }
+            }
+            myLibrary.removeAll(removed);
+            BookView.setItems(myLibrary);
+            FXMLLoader loader = new FXMLLoader((getClass().getResource("CostView.fxml")));     //buy-screen
+            Parent CostParent = loader.load();          
             CostViewController controller = loader.getController(); //will make this later dun wanna td
-            controller.initData(cost, buyer);
-
+            controller.initData(cost, buyer.getCustomer());
+            
+            //System.out.println(cost);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene costScene = new Scene(CostParent);
             window.setScene(costScene);
             window.show();
         }
@@ -126,30 +139,39 @@ public class LibraryCustomerController implements Initializable {
 
     @FXML
     void redeemAndBuy(ActionEvent event) throws IOException{
-        buyer.saveBooks(Library.getInstance()); //checks for the check boxes
+        buyer.getCustomer().saveBooks(Library.getInstance()); //checks for the check boxes
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("confirm checkout");
         alert.setHeaderText("You are about to pay");
         alert.setContentText("the books selected will be saved if you leave now");
         if(alert.showAndWait().get()==ButtonType.OK){
             //check if books are still available
-            for(int i = 0;i<buyer.getSavedBooks().size();i++){
-                if(!Library.getInstance().verifyBooks(buyer.getSavedBooks().get(i))){
-                    buyer.getSavedBooks().remove(i);
-                    System.out.println("Out of this book :"+buyer.getSavedBooks().get(i).getName());
+            for(int i = 0;i<buyer.getCustomer().getSavedBooks().size();i++){
+                if(Library.getInstance().verifyBooks(buyer.getCustomer().getSavedBooks().get(i))){
+                    buyer.getCustomer().getSavedBooks().remove(i);
+                    System.out.println("Out of this book :"+buyer.getCustomer().getSavedBooks().get(i).getName());
                 }
             }
-            int cost = BuyBooks.getInstance().totalCost(buyer);
-            BuyBooks.getInstance().redeemAndBuy(Library.getInstance(), buyer, cost);
-            tableView.setItems(myLibrary);
+            int cost = BuyBooks.getInstance().totalCost(buyer.getCustomer());
+            cost = BuyBooks.getInstance().redeemAndBuy(Library.getInstance(), buyer.getCustomer(), cost);
+           for(int i = 0; i<buyer.getCustomer().getSavedBooks().size();i++){
+                if(myLibrary.contains(buyer.getCustomer().getSavedBooks().get(i))){
+                    myLibrary.remove(buyer.getCustomer().getSavedBooks().get(i));
+                    //Book del = BookView.getItems().get(i);
+                    BookView.getItems().remove(i);
+                    
+                }
+            }
+            //BookView.setItems(myLibrary);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("CostView.fxml"));     //buy-screen
             Parent CostParent = loader.load();
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene costScene = new Scene(CostParent);
             CostViewController controller = loader.getController(); //will make this later dun wanna td
-            controller.initData(cost, buyer);
+            controller.initData(cost, buyer.getCustomer());
 
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
             window.setScene(costScene);
             window.show();
         }
@@ -162,8 +184,8 @@ public class LibraryCustomerController implements Initializable {
         alert.setHeaderText("You are about to log out");
         alert.setContentText("the books selected will be saved when you leave");
         if(alert.showAndWait().get()==ButtonType.OK){
-            buyer.writeToFile("customers.txt");      //change file name
-            Library.getInstance().writeToFile("books.txt");  //change file name
+            buyer.getCustomer().writeToFile("customers.txt");      //change file name
+            //Library.getInstance().writeToFile("books.txt");  //change file name
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));   //login screen
             Scene loginScene = new Scene(tableViewParent);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
