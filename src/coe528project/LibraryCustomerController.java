@@ -82,7 +82,11 @@ public class LibraryCustomerController implements Initializable {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         selectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("selected"));
         for(int i = 0; i<Library.getInstance().getLibrary().size();i++){    //change to remove selected books
-            myLibrary.add(Library.getInstance().getLibrary().get(i));
+            if(!myLibrary.contains(Library.getInstance().getLibrary().get(i))){
+                myLibrary.add(Library.getInstance().getLibrary().get(i));
+            }
+            
+            System.out.println(Library.getInstance().getLibrary().get(i).getName());
         }
         BookView.setItems(myLibrary);
     }
@@ -113,11 +117,17 @@ public class LibraryCustomerController implements Initializable {
             ObservableList<Book> removed = FXCollections.observableArrayList();
             for(Book b: myLibrary){
                 if(b.checkSelected()){
+                    System.out.println("test");
                     removed.add(b);
                 }
             }
             myLibrary.removeAll(removed);
-            BookView.setItems(myLibrary);
+            for(int i = 0; i<Library.getInstance().getLibrary().size();i++){    //change to remove selected books
+            
+            System.out.println(Library.getInstance().getLibrary().get(i).getName());
+        }
+            //BookView.setItems(myLibrary);
+            //BookView.setItems(myLibrary);
             FXMLLoader loader = new FXMLLoader((getClass().getResource("CostView.fxml")));     //buy-screen
             Parent CostParent = loader.load();          
             CostViewController controller = loader.getController(); //will make this later dun wanna td
@@ -160,6 +170,7 @@ public class LibraryCustomerController implements Initializable {
                     removed.add(b);
                 }
             }
+            myLibrary.removeAll(removed);
             //BookView.setItems(myLibrary);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("CostView.fxml"));     //buy-screen
