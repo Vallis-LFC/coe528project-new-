@@ -52,8 +52,8 @@ public class BuyBooks {
             buyer.addPoint(remainingCost); // Add points for remaining amount paid
         }
         
-        for (Book book : buyer.getSavedBooks()) {
-            myLibrary.deleteBooks(book);
+        for (int i = 0; i<buyer.getSavedBooks().size(); i++) {
+            myLibrary.deleteBooks(buyer.getSavedBooks().get(i));
         }
         buyer.getSavedBooks().clear();
         myLibrary.clearCheckBoxes();
