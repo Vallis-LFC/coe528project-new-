@@ -69,7 +69,6 @@ public class LoginScreenController implements Initializable {
             root = loader.load();
             LibraryCustomerController controller = loader.getController();
             controller.initData(c);
-            
         }
         else{ //window pop up for incorrect user and pass combination
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
