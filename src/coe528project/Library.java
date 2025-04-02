@@ -62,7 +62,7 @@ public class Library {
             Scanner myReader = new Scanner(input);
             while(myReader.hasNextLine() && myReader.hasNext()){
                 String name = myReader.next();
-                int price = myReader.nextInt();
+                int price = Integer.parseInt(myReader.next());
                 myLibrary.add(new Book(name, price));
                 //myReader.nextLine();
             }
@@ -80,7 +80,7 @@ public class Library {
             FileWriter updated = new FileWriter(output);
             for (int i = 0; i<myLibrary.size();i++){
                 System.out.println(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice());
-                updated.write(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice());
+                updated.write(myLibrary.get(i).getName()+"\t"+myLibrary.get(i).getPrice()+"\n");
             }
             updated.close();
             System.out.println("Library updated");
