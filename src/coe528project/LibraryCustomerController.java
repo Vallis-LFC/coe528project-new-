@@ -154,12 +154,10 @@ public class LibraryCustomerController implements Initializable {
             }
             int cost = BuyBooks.getInstance().totalCost(buyer.getCustomer());
             cost = BuyBooks.getInstance().redeemAndBuy(Library.getInstance(), buyer.getCustomer(), cost);
-           for(int i = 0; i<buyer.getCustomer().getSavedBooks().size();i++){
-                if(myLibrary.contains(buyer.getCustomer().getSavedBooks().get(i))){
-                    myLibrary.remove(buyer.getCustomer().getSavedBooks().get(i));
-                    //Book del = BookView.getItems().get(i);
-                    BookView.getItems().remove(i);
-                    
+            ObservableList<Book> removed = FXCollections.observableArrayList();
+            for(Book b: myLibrary){
+                if(b.checkSelected()){
+                    removed.add(b);
                 }
             }
             //BookView.setItems(myLibrary);
