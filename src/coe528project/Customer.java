@@ -171,8 +171,8 @@ public class Customer {
         
         int redeemable = (this.points-this.points%100)/100;
         
-        if (total-redeemable>=0){
-            this.points = 0;
+        if (total-redeemable>0){
+            this.points = this.points%100;
             return total-redeemable;
         }
         
